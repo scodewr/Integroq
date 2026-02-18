@@ -1,12 +1,12 @@
 # Integroq
 
-Integra��o com a API Groq para interagir com modelos de linguagem abertos.
+Integração com a API Groq para interagir com modelos de linguagem abertos.
 
-## ? Descri��o
+## 📋 Descrição
 
-Aplica��o Spring Boot que fornece uma API REST para interagir com modelos de IA atrav�s do Spring AI e Groq API.
+Aplicação Spring Boot que fornece uma API REST para interagir com modelos de IA através do Spring AI e Groq API.
 
-## ?? Tecnologias
+## 🛠️ Tecnologias
 
 - Java 25
 - Spring Boot 4.0.2
@@ -14,80 +14,80 @@ Aplica��o Spring Boot que fornece uma API REST para interagir com modelos de IA 
 - Maven
 - Lombok
 
-## ? Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 src/main/java/br/scodewr/integroq/
-??? application/
-?   ??? ChatClientInteraction.java      # Application Service
-?   ??? port/
-?       ??? ModelPortOut.java           # Interface da porta de sa�da
-??? infrastructure/
-?   ??? adapter/
-?   ?   ??? in/
-?   ?   ?   ??? CallChatModelAdapterIn.java   # REST Controller
-?   ?   ??? dto/
-?   ?   ?   ??? ModelReplyDTO.java     # DTO de resposta
-?   ?   ??? out/
-?   ?       ??? OpenAiChatModelAdapterOut.java # Implementa��o da porta
-?   ??? config/
-?       ??? DependencyInjectionConfig.java     # Configura��o de DI
+├── application/
+│   ├── ChatClientInteraction.java      # Application Service
+│   └── port/
+│       └── ModelPortOut.java           # Interface da porta de saída
+├── infrastructure/
+│   ├── adapter/
+│   │   ├── in/
+│   │   │   └── CallChatModelAdapterIn.java   # REST Controller
+│   │   ├── dto/
+│   │   │   └── ModelReplyDTO.java     # DTO de resposta
+│   │   └── out/
+│   │       └── OpenAiChatModelAdapterOut.java # Implementação da porta
+│   └── config/
+│       └── DependencyInjectionConfig.java     # Configuração de DI
 ```
 
-## ? Como Usar
+## 🚀 Como Usar
 
-### Pr�-requisitos
+### Pré-requisitos
 
 - Java 25+
 - Maven 3.8+
 - Chave da API Groq/OpenAI configurada
 
-### Instala��o
+### Instalação
 
 ```bash
 mvn clean install
 ```
 
-### Executar a Aplica��o
+### Executar a Aplicação
 
 ```bash
 mvn spring-boot:run
 ```
 
-A aplica��o estar� dispon�vel em [http://localhost:8080](http://localhost:8080)
+A aplicação estará disponível em [http://localhost:8080](http://localhost:8080)
 
-## ? Endpoints
+## 🔌 Endpoints
 
 ### POST /ai/inference
 
-Realiza uma infer�ncia com o modelo de IA.
+Realiza uma inferência com o modelo de IA.
 
 **Request:**
 
 ```bash
 curl -X POST http://localhost:8080/ai/inference \
   -H "Content-Type: application/json" \
-  -d "Qual � a capital da Fran�a?"
+  -d "Qual é a capital da França?"
 ```
 
 **Response:**
 
 ```json
 {
-  "response": "A capital da Fran�a � Paris."
+  "response": "A capital da França é Paris."
 }
 ```
 
-## ?? Arquitetura
+## 🏗️ Arquitetura
 
 O projeto segue Domain-Driven Design (DDD) com:
 
-- **Application Layer**: L�gica de neg�cio agn�stica a frameworks (`ChatClientInteraction`)
-- **Adapter Pattern**: Adapta requisi��es HTTP e chamadas externas
+- **Application Layer**: Lógica de negócio agnóstica a frameworks (`ChatClientInteraction`)
+- **Adapter Pattern**: Adapta requisições HTTP e chamadas externas
 - **Ports & Adapters**: `ModelPortOut` define contrato; `OpenAiChatModelAdapterOut` implementa
 - **Dependency Injection**: Configurado em `DependencyInjectionConfig`
 
-## ?? Configura��o
+## ⚙️ Configuração
 
 Configure as credenciais da API no `application.yml`:
 
