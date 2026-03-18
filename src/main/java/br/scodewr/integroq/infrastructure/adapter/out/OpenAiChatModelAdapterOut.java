@@ -15,7 +15,7 @@ public class OpenAiChatModelAdapterOut implements ModelPortOut {
 
     @Override
     public String interact(String prompt) {
-
+        log.info("Iniciando interação com modelo");
         var chatClient = this.chatClientBuilder.build();
 
         var response = chatClient.prompt()
@@ -24,6 +24,23 @@ public class OpenAiChatModelAdapterOut implements ModelPortOut {
                 .content();
 
         log.info("Resposta do modelo: {}", response);
+        log.info("Interação realizada");
+        return response;
+    }
+
+    @Override
+    public String interactionWithTemplate(String prompt, String template) {
+        log.info("Iniciando interação com modelo utilizando template");
+        var chatClient = this.chatClientBuilder.build();
+
+        var response = chatClient.prompt()
+                .user(prompt)
+                .tools() // functions to feed the model
+                .call()
+                .content();
+
+        log.info("Resposta do modelo: {}", response);
+        log.info("Interação realizada");
 
         return response;
     }
